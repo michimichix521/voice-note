@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>VoiceNote | Turn Speech into Text</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="VoiceNote home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+        <span>VoiceNote</span>
+      </a>
+      <div class="topbar-actions">
+        <div class="topbar-note"><span class="secure-dot"></span><span data-i18n="privacyShort">No recordings or transcripts are stored by VoiceNote</span></div>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <label class="ui-language-control">
+          <span data-i18n="uiLanguage">Display</span>
+          <select id="uiLanguageSelect" aria-label="Display language" data-i18n-aria-label="uiLanguageAria">
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="intro">
+        <p class="eyebrow" data-i18n="eyebrow">VOICE TO TEXT</p>
+        <p class="intro-copy" data-i18n-html="intro">Speak into your microphone.<br>Your words will appear as text in real time.</p>
+        <aside class="privacy-note" aria-label="Privacy information">
+          <span class="privacy-icon" aria-hidden="true">✓</span>
+          <p data-i18n-html="privacy"><strong>Built with your privacy in mind.</strong> VoiceNote only displays the recognized text and does not record, store, or send your audio or transcript to its own servers. Audio is processed by your browser's speech-recognition provider.</p>
+        </aside>
+      </section>
+
+      <section class="workspace" aria-label="Speech recognition workspace">
+        <div class="control-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label" data-i18n="recordingLabel">RECORDING</p>
+              <h2 data-i18n="voiceInput">Voice Input</h2>
+            </div>
+            <label class="language-control">
+              <span data-i18n="recognitionLanguage">Language</span>
+              <select id="languageSelect" aria-label="Recognition language">
+                <option value="ja-JP" data-i18n="japanese">Japanese</option>
+                <option value="en-US" data-i18n="english">English</option>
+              </select>
+            </label>
+          </div>
+          <div class="record-visual">
+            <div class="pulse-ring"></div>
+            <button id="recordButton" class="record-button" type="button" aria-label="Start speech recognition">
+              <svg class="mic-icon" viewBox="0 0 24 30" aria-hidden="true" focusable="false">
+                <rect x="7" y="1.5" width="10" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                <path d="M3.5 14.5a8.5 8.5 0 0 0 17 0M12 23v5M8 28h8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <p id="statusText" class="status-text" data-i18n="startSpeaking">Click to start speaking</p>
+          <div class="waveform" id="waveform" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <p class="shortcut-hint" data-i18n-html="shortcut">Press <kbd>Space</kbd> to start or stop</p>
+        </div>
+
+        <div class="transcript-panel">
+          <div class="transcript-header">
+            <div>
+              <p class="section-label" data-i18n="transcriptLabel">TRANSCRIPT</p>
+              <h2 data-i18n="transcriptTitle">Transcript</h2>
+            </div>
+            <div class="transcript-actions">
+              <button id="copyButton" class="icon-button" type="button" aria-label="Copy transcript" title="Copy" disabled>
+                <span class="copy-icon" aria-hidden="true"></span>
+              </button>
+              <button id="clearButton" class="text-button" type="button" data-i18n="clear" disabled>Clear</button>
+            </div>
+          </div>
+          <div id="transcript" class="transcript" tabindex="0" aria-live="polite">
+            <div id="emptyState" class="empty-state">
+              <span class="empty-icon" aria-hidden="true">Aa</span>
+              <p data-i18n-html="emptyTranscript">Your transcript will<br>appear here</p>
+            </div>
+          </div>
+          <div class="transcript-footer"><span id="charCount">0</span> <span data-i18n="characters">characters</span></div>
+        </div>
+      </section>
+
+      <p id="supportMessage" class="support-message" role="status"></p>
+    </main>
+    <footer class="footer">
+      <span>VoiceNote <span class="footer-dot">·</span> <a href="https://github.com/Michihiro-Tsukano/VoiceNote" target="_blank" rel="noopener noreferrer" data-i18n="githubSource">Source on GitHub</a></span>
+      <span class="copyright">© 2026 Michihiro Tsukano</span>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
